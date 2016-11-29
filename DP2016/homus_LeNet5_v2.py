@@ -92,15 +92,15 @@ for train_index, test_index in skf.split(X, Y):
 
 	model = Sequential()
 
-	model.add(Convolution2D(nb_filters1, nb_conv1, nb_conv1, border_mode='same', input_shape = input_shape))
+	model.add(Convolution2D(nb_filters1, nb_conv1, nb_conv1, border_mode='valid', input_shape = input_shape))
 	model.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 	model.add(Activation('tanh'))
 
-	model.add(Convolution2D(nb_filters2, nb_conv2, nb_conv2, border_mode='same'))
+	model.add(Convolution2D(nb_filters2, nb_conv2, nb_conv2, border_mode='valid'))
 	model.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
 	model.add(Activation('tanh'))
 
-	model.add(Convolution2D(nb_filters3, nb_conv3, nb_conv3, border_mode='same'))
+	model.add(Convolution2D(nb_filters3, nb_conv3, nb_conv3, border_mode='valid'))
 	#model.add(Dropout(0.5))
 
 	model.add(Flatten())
