@@ -33,7 +33,7 @@ img_rows, img_cols = 40, 40
 # number of convolutional filters to use
 nb_filters1 = 16
 nb_filters2 = 32
-nb_filters3 = 240
+nb_filters3 = 120
 
 # convolution kernel size
 nb_conv1 = 2
@@ -71,20 +71,20 @@ def load_data():
 	skf = StratifiedKFold(n_splits=10)
 	
 	
-	return X,Y,skf,input_shape
+	return X, Y, skf, input_shape
 	
 # the data split between train and test sets
-X,Y,skf,input_shape = load_data()
-
-print(X_train.shape, 'train samples')
-print(X_test.shape, 'test samples')
-print(input_shape,'input_shape')
-print(nb_epoch,'epochs')
+X, Y, skf, input_shape = load_data()
 
 for train_index, test_index in skf.split(X, Y):
 
 	X_train, X_test = X[train_index], X[test_index]
-    Y_train, Y_test = Y[train_index], Y[test_index]
+	Y_train, Y_test = Y[train_index], Y[test_index]
+
+	print(X_train.shape, 'train samples')
+	print(X_test.shape, 'test samples')
+	print(input_shape,'input_shape')
+	print(nb_epoch,'epochs')
 	
 	#
 	# Neural Network Structure
@@ -115,10 +115,6 @@ for train_index, test_index in skf.split(X, Y):
 
 	model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=nb_epoch,verbose=1, validation_data=(X_test, Y_test))
 	score = model.evaluate(X_test, Y_test, verbose=0)
-
-	#
-	# Results
-	#
 
 	print('Test score:', score[0])
 	print('Test accuracy:', score[1])

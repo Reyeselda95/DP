@@ -30,7 +30,7 @@ img_rows, img_cols = 40, 40
 # number of convolutional filters to use
 nb_filters1 = 16
 nb_filters2 = 32
-nb_filters3 = 240
+nb_filters3 = 120
 
 # convolution kernel size
 nb_conv1 = 2
