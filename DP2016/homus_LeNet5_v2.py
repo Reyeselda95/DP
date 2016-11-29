@@ -111,7 +111,7 @@ for train_index, test_index in skf.split(X, Y):
 	model.add(Activation('softmax'))
 
 	optimizer=nadam()
-	model.compile(loss='categorical_crossentropy',optimizer=optimizer, metrics=['accuracy'])
+	model.compile(loss='sparse_categorical_crossentropy',optimizer=optimizer, metrics=['accuracy'])
 
 	model.fit(X_train, Y_train, batch_size=batch_size, nb_epoch=nb_epoch,verbose=1, validation_data=(X_test, Y_test))
 	score = model.evaluate(X_test, Y_test, verbose=0)
